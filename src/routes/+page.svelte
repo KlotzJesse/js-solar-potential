@@ -37,15 +37,16 @@
   // Reactive variables for URL params
   let defaultPlace = fallbackPlace;
 
-  $: {
-    const urlParams = $page.url.searchParams;
+
+  onMount(() => {
+    const urlParams = new URLSearchParams(window.location.search);
     const name = urlParams.get('name');
     const address = urlParams.get('address');
     defaultPlace = {
       name: name || fallbackPlace.name,
       address: address || fallbackPlace.address,
     };
-  }
+  });
 
   let location: google.maps.LatLng | undefined;
   const zoom = 19;
