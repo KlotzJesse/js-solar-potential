@@ -31,7 +31,7 @@
   let buildingInsights: BuildingInsightsResponse | undefined;
 
   // State
-  let expandedSection: string = '';
+  let expandedSection: string = 'Gebäudeübersicht';
   let showPanels = true;
 
   // User settings
