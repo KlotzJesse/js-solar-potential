@@ -150,17 +150,17 @@ export async function findClosestBuilding(
   console.log('GET buildingInsights\n', args);
   const params = new URLSearchParams({ ...args, key: apiKey });
   // https://developers.google.com/maps/documentation/solar/reference/rest/v1/buildingInsights/findClosest
-  return fetch(`https://solar.googleapis.com/v1/buildingInsights:findClosest?${params}`).then(
-    async (response) => {
-      const content = await response.json();
-      if (response.status != 200) {
-        console.error('findClosestBuilding\n', content);
-        throw content;
-      }
-      console.log('buildingInsightsResponse', content);
-      return content;
-    },
-  );
+  return fetch(
+    `https://solar.googleapis.com/v1/buildingInsights:findClosest?${params}&requiredQuality=LOW`,
+  ).then(async (response) => {
+    const content = await response.json();
+    if (response.status != 200) {
+      console.error('findClosestBuilding\n', content);
+      throw content;
+    }
+    console.log('buildingInsightsResponse', content);
+    return content;
+  });
 }
 // [END solar_api_building_insights]
 
