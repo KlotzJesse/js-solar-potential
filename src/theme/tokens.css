@@ -15,51 +15,50 @@
  */
 
 :root {
-  --md-source: #009def; /* Your new primary color */
-  /* primary - Mapped from your Tailwind "cerulean" palette */
-  --md-ref-palette-primary0: #000000;   /* from Tailwind 950 */
-  --md-ref-palette-primary10: #000a0f;   /* from Tailwind 900 */
-  --md-ref-palette-primary20: #002e47;   /* from Tailwind 800 */
-  --md-ref-palette-primary30: #00537f;   /* from Tailwind 700 */
-  --md-ref-palette-primary40: #009def;   /* from Tailwind 500/DEFAULT */
-  --md-ref-palette-primary50: #19b0ff;   /* from Tailwind 400 */
-  --md-ref-palette-primary60: #42beff;   /* from Tailwind 300 */
-  --md-ref-palette-primary70: #6accff;   /* from Tailwind 200 */
-  --md-ref-palette-primary80: #93daff;   /* from Tailwind 100 */
-  --md-ref-palette-primary90: #a8e1ff;   /* from Tailwind 50 */
-  --md-ref-palette-primary95: #d1eeff;   /* Lighter shade for M3 Tone 95 */
-  --md-ref-palette-primary99: #eff7ff;   /* Very light shade for M3 Tone 99 */
-  --md-ref-palette-primary100: #ffffff;  /* Standard white */
-
-  /* secondary - Assuming these remain unchanged */
+  --md-source: #009def; /* Your seed color */
+  /* primary - From Material Theme Builder export */
+  --md-ref-palette-primary0: #000000;
+  --md-ref-palette-primary10: #001d32;
+  --md-ref-palette-primary20: #003352;
+  --md-ref-palette-primary30: #004a75;
+  --md-ref-palette-primary40: #006399;
+  --md-ref-palette-primary50: #007dbf;
+  --md-ref-palette-primary60: #0098e7;
+  --md-ref-palette-primary70: #4cb2ff;
+  --md-ref-palette-primary80: #95ccff;
+  --md-ref-palette-primary90: #cde5ff;
+  --md-ref-palette-primary95: #e8f2ff;
+  --md-ref-palette-primary99: #fcfcff;
+  --md-ref-palette-primary100: #ffffff;
+  /* secondary - From Material Theme Builder export */
   --md-ref-palette-secondary0: #000000;
-  --md-ref-palette-secondary10: #1d192b;
-  --md-ref-palette-secondary20: #332d41;
-  --md-ref-palette-secondary30: #4a4458;
-  --md-ref-palette-secondary40: #625b71;
-  --md-ref-palette-secondary50: #7a7289;
-  --md-ref-palette-secondary60: #958da5;
-  --md-ref-palette-secondary70: #b0a7c0;
-  --md-ref-palette-secondary80: #ccc2dc;
-  --md-ref-palette-secondary90: #e8def8;
-  --md-ref-palette-secondary95: #f6edff;
-  --md-ref-palette-secondary99: #fffbfe;
+  --md-ref-palette-secondary10: #071d2e; /* Note: JSON had secondary starting at 10 */
+  --md-ref-palette-secondary20: #1e3244;
+  --md-ref-palette-secondary30: #35495b;
+  --md-ref-palette-secondary40: #4d6074;
+  --md-ref-palette-secondary50: #65798d;
+  --md-ref-palette-secondary60: #7f93a8;
+  --md-ref-palette-secondary70: #99adc3;
+  --md-ref-palette-secondary80: #b4c9df;
+  --md-ref-palette-secondary90: #d0e5fc;
+  --md-ref-palette-secondary95: #e8f2ff;
+  --md-ref-palette-secondary99: #fcfcff;
   --md-ref-palette-secondary100: #ffffff;
-  /* tertiary - Assuming these remain unchanged */
+  /* tertiary - From Material Theme Builder export */
   --md-ref-palette-tertiary0: #000000;
-  --md-ref-palette-tertiary10: #31111d;
-  --md-ref-palette-tertiary20: #492532;
-  --md-ref-palette-tertiary30: #633b48;
-  --md-ref-palette-tertiary40: #7d5260;
-  --md-ref-palette-tertiary50: #986977;
-  --md-ref-palette-tertiary60: #b58392;
-  --md-ref-palette-tertiary70: #d29dac;
-  --md-ref-palette-tertiary80: #efb8c8;
-  --md-ref-palette-tertiary90: #ffd8e4;
-  --md-ref-palette-tertiary95: #ffecf1;
-  --md-ref-palette-tertiary99: #fffbfa;
+  --md-ref-palette-tertiary10: #291800; /* Note: JSON had tertiary starting at 10 */
+  --md-ref-palette-tertiary20: #442b00;
+  --md-ref-palette-tertiary30: #5f410d;
+  --md-ref-palette-tertiary40: #795823;
+  --md-ref-palette-tertiary50: #957139;
+  --md-ref-palette-tertiary60: #b18a50;
+  --md-ref-palette-tertiary70: #cea468;
+  --md-ref-palette-tertiary80: #ebbf80;
+  --md-ref-palette-tertiary90: #ffddb1;
+  --md-ref-palette-tertiary95: #ffeEDB;
+  --md-ref-palette-tertiary99: #fffbff;
   --md-ref-palette-tertiary100: #ffffff;
-  /* error - Assuming these remain unchanged */
+  /* error - Original palette retained as JSON did not provide a new full error palette */
   --md-ref-palette-error0: #000000;
   --md-ref-palette-error10: #410e0b;
   --md-ref-palette-error20: #601410;
@@ -73,98 +72,98 @@
   --md-ref-palette-error95: #fceeee;
   --md-ref-palette-error99: #fffbf9;
   --md-ref-palette-error100: #ffffff;
-  /* neutral - Assuming these remain unchanged */
+  /* neutral - From Material Theme Builder export */
   --md-ref-palette-neutral0: #000000;
-  --md-ref-palette-neutral10: #1c1b1f;
-  --md-ref-palette-neutral20: #313033;
-  --md-ref-palette-neutral30: #484649;
-  --md-ref-palette-neutral40: #605d62;
-  --md-ref-palette-neutral50: #787579;
-  --md-ref-palette-neutral60: #939094;
-  --md-ref-palette-neutral70: #aeaaae;
-  --md-ref-palette-neutral80: #c9c5ca;
-  --md-ref-palette-neutral90: #e6e1e5;
-  --md-ref-palette-neutral95: #f4eff4;
-  --md-ref-palette-neutral99: #fffbfe;
+  --md-ref-palette-neutral10: #1a1c1e; /* Note: JSON had neutral starting at 10 */
+  --md-ref-palette-neutral20: #2f3033;
+  --md-ref-palette-neutral30: #45474a;
+  --md-ref-palette-neutral40: #5d5e61;
+  --md-ref-palette-neutral50: #76777a;
+  --md-ref-palette-neutral60: #909194;
+  --md-ref-palette-neutral70: #aaabae;
+  --md-ref-palette-neutral80: #c6c6c9;
+  --md-ref-palette-neutral90: #e2e2e5;
+  --md-ref-palette-neutral95: #f0f0f4;
+  --md-ref-palette-neutral99: #fcfcff;
   --md-ref-palette-neutral100: #ffffff;
-  /* neutral-variant - Assuming these remain unchanged */
+  /* neutral-variant - From Material Theme Builder export */
   --md-ref-palette-neutral-variant0: #000000;
-  --md-ref-palette-neutral-variant10: #1d1a22;
-  --md-ref-palette-neutral-variant20: #322f37;
-  --md-ref-palette-neutral-variant30: #49454f;
-  --md-ref-palette-neutral-variant40: #605d66;
-  --md-ref-palette-neutral-variant50: #79747e;
-  --md-ref-palette-neutral-variant60: #938f99;
-  --md-ref-palette-neutral-variant70: #aea9b4;
-  --md-ref-palette-neutral-variant80: #cac4d0;
-  --md-ref-palette-neutral-variant90: #e7e0ec;
-  --md-ref-palette-neutral-variant95: #f5eefa;
-  --md-ref-palette-neutral-variant99: #fffbfe;
+  --md-ref-palette-neutral-variant10: #171c22; /* Note: JSON had neutral-variant starting at 10 */
+  --md-ref-palette-neutral-variant20: #2b3137;
+  --md-ref-palette-neutral-variant30: #42474e;
+  --md-ref-palette-neutral-variant40: #595f66;
+  --md-ref-palette-neutral-variant50: #72777f;
+  --md-ref-palette-neutral-variant60: #8c9198;
+  --md-ref-palette-neutral-variant70: #a6acb3;
+  --md-ref-palette-neutral-variant80: #c2c7cf;
+  --md-ref-palette-neutral-variant90: #dee3eb;
+  --md-ref-palette-neutral-variant95: #ecf1f9;
+  --md-ref-palette-neutral-variant99: #fcfcff;
   --md-ref-palette-neutral-variant100: #ffffff;
 
-  /* light - System colors updated based on new primary tones */
-  --md-sys-color-primary-light: var(--md-ref-palette-primary40);
-  --md-sys-color-on-primary-light: var(--md-ref-palette-primary100); /* Or primary0 for high contrast on light primary */
-  --md-sys-color-primary-container-light: var(--md-ref-palette-primary90);
-  --md-sys-color-on-primary-container-light: var(--md-ref-palette-primary10);
-  --md-sys-color-secondary-light: #625b71; /* Unchanged */
-  --md-sys-color-on-secondary-light: #ffffff; /* Unchanged */
-  --md-sys-color-secondary-container-light: #e8def8; /* Unchanged */
-  --md-sys-color-on-secondary-container-light: #1d192b; /* Unchanged */
-  --md-sys-color-tertiary-light: #7d5260; /* Unchanged */
-  --md-sys-color-on-tertiary-light: #ffffff; /* Unchanged */
-  --md-sys-color-tertiary-container-light: #ffd8e4; /* Unchanged */
-  --md-sys-color-on-tertiary-container-light: #31111d; /* Unchanged */
-  --md-sys-color-error-light: #b3261e; /* Unchanged */
-  --md-sys-color-on-error-light: #ffffff; /* Unchanged */
-  --md-sys-color-error-container-light: #f9dedc; /* Unchanged */
-  --md-sys-color-on-error-container-light: #410e0b; /* Unchanged */
-  --md-sys-color-outline-light: #79747e; /* Unchanged */
-  --md-sys-color-background-light: #fffbfe; /* Unchanged */
-  --md-sys-color-on-background-light: #1c1b1f; /* Unchanged */
-  --md-sys-color-surface-light: #fffbfe; /* Unchanged */
-  --md-sys-color-on-surface-light: #1c1b1f; /* Unchanged */
-  --md-sys-color-surface-variant-light: #e7e0ec; /* Unchanged */
-  --md-sys-color-on-surface-variant-light: #49454f; /* Unchanged */
-  --md-sys-color-inverse-surface-light: #313033; /* Unchanged */
-  --md-sys-color-inverse-on-surface-light: #f4eff4; /* Unchanged */
-  --md-sys-color-inverse-primary-light: var(--md-ref-palette-primary80);
-  --md-sys-color-shadow-light: #000000; /* Unchanged */
-  --md-sys-color-surface-tint-light: var(--md-ref-palette-primary40);
-  --md-sys-color-outline-variant-light: #cac4d0; /* Unchanged */
-  --md-sys-color-scrim-light: #000000; /* Unchanged */
+  /* light - System colors from Material Theme Builder export "schemes.light" */
+  --md-sys-color-primary-light: #006399; /* schemes.light.primary */
+  --md-sys-color-on-primary-light: #ffffff; /* schemes.light.onPrimary */
+  --md-sys-color-primary-container-light: #009def; /* schemes.light.primaryContainer */
+  --md-sys-color-on-primary-container-light: #00314f; /* schemes.light.onPrimaryContainer */
+  --md-sys-color-secondary-light: #3e6281; /* schemes.light.secondary */
+  --md-sys-color-on-secondary-light: #ffffff; /* schemes.light.onSecondary */
+  --md-sys-color-secondary-container-light: #b4d8fd; /* schemes.light.secondaryContainer */
+  --md-sys-color-on-secondary-container-light: #3b5f7e; /* schemes.light.onSecondaryContainer */
+  --md-sys-color-tertiary-light: #775621; /* schemes.light.tertiary */
+  --md-sys-color-on-tertiary-light: #ffffff; /* schemes.light.onTertiary */
+  --md-sys-color-tertiary-container-light: #926e37; /* schemes.light.tertiaryContainer - Mapped from your MTB export logic */
+  --md-sys-color-on-tertiary-container-light: #fffbff; /* schemes.light.onTertiaryContainer */
+  --md-sys-color-error-light: #ba1a1a; /* schemes.light.error */
+  --md-sys-color-on-error-light: #ffffff; /* schemes.light.onError */
+  --md-sys-color-error-container-light: #ffdad6; /* schemes.light.errorContainer */
+  --md-sys-color-on-error-container-light: #93000a; /* schemes.light.onErrorContainer */
+  --md-sys-color-outline-light: #6f7883; /* schemes.light.outline */
+  --md-sys-color-background-light: #f7f9ff; /* schemes.light.background */
+  --md-sys-color-on-background-light: #171c21; /* schemes.light.onBackground */
+  --md-sys-color-surface-light: #f7f9ff; /* schemes.light.surface */
+  --md-sys-color-on-surface-light: #171c21; /* schemes.light.onSurface */
+  --md-sys-color-surface-variant-light: #dae3ef; /* schemes.light.surfaceVariant */
+  --md-sys-color-on-surface-variant-light: #3f4851; /* schemes.light.onSurfaceVariant */
+  --md-sys-color-inverse-surface-light: #2c3136; /* schemes.light.inverseSurface */
+  --md-sys-color-inverse-on-surface-light: #edf1f8; /* schemes.light.inverseOnSurface */
+  --md-sys-color-inverse-primary-light: #95ccff; /* schemes.light.inversePrimary */
+  --md-sys-color-shadow-light: #000000; /* schemes.light.shadow */
+  --md-sys-color-surface-tint-light: #006399; /* schemes.light.surfaceTint */
+  --md-sys-color-outline-variant-light: #bec7d3; /* schemes.light.outlineVariant */
+  --md-sys-color-scrim-light: #000000; /* schemes.light.scrim */
 
-  /* dark - System colors updated based on new primary tones */
-  --md-sys-color-primary-dark: var(--md-ref-palette-primary80);
-  --md-sys-color-on-primary-dark: var(--md-ref-palette-primary20);
-  --md-sys-color-primary-container-dark: var(--md-ref-palette-primary30);
-  --md-sys-color-on-primary-container-dark: var(--md-ref-palette-primary90);
-  --md-sys-color-secondary-dark: #ccc2dc; /* Unchanged */
-  --md-sys-color-on-secondary-dark: #332d41; /* Unchanged */
-  --md-sys-color-secondary-container-dark: #4a4458; /* Unchanged */
-  --md-sys-color-on-secondary-container-dark: #e8def8; /* Unchanged */
-  --md-sys-color-tertiary-dark: #efb8c8; /* Unchanged */
-  --md-sys-color-on-tertiary-dark: #492532; /* Unchanged */
-  --md-sys-color-tertiary-container-dark: #633b48; /* Unchanged */
-  --md-sys-color-on-tertiary-container-dark: #ffd8e4; /* Unchanged */
-  --md-sys-color-error-dark: #f2b8b5; /* Unchanged */
-  --md-sys-color-on-error-dark: #601410; /* Unchanged */
-  --md-sys-color-error-container-dark: #8c1d18; /* Unchanged */
-  --md-sys-color-on-error-container-dark: #f9dedc; /* Unchanged */
-  --md-sys-color-outline-dark: #938f99; /* Unchanged */
-  --md-sys-color-background-dark: #1c1b1f; /* Unchanged */
-  --md-sys-color-on-background-dark: #e6e1e5; /* Unchanged */
-  --md-sys-color-surface-dark: #1c1b1f; /* Unchanged */
-  --md-sys-color-on-surface-dark: #e6e1e5; /* Unchanged */
-  --md-sys-color-surface-variant-dark: #49454f; /* Unchanged */
-  --md-sys-color-on-surface-variant-dark: #cac4d0; /* Unchanged */
-  --md-sys-color-inverse-surface-dark: #e6e1e5; /* Unchanged */
-  --md-sys-color-inverse-on-surface-dark: #313033; /* Unchanged */
-  --md-sys-color-inverse-primary-dark: var(--md-ref-palette-primary40);
-  --md-sys-color-shadow-dark: #000000; /* Unchanged */
-  --md-sys-color-surface-tint-dark: var(--md-ref-palette-primary80);
-  --md-sys-color-outline-variant-dark: #49454f; /* Unchanged */
-  --md-sys-color-scrim-dark: #000000; /* Unchanged */
+  /* dark - System colors from Material Theme Builder export "schemes.dark" */
+  --md-sys-color-primary-dark: #95ccff; /* schemes.dark.primary */
+  --md-sys-color-on-primary-dark: #003352; /* schemes.dark.onPrimary */
+  --md-sys-color-primary-container-dark: #009def; /* schemes.dark.primaryContainer */
+  --md-sys-color-on-primary-container-dark: #00314f; /* schemes.dark.onPrimaryContainer */
+  --md-sys-color-secondary-dark: #a6caee; /* schemes.dark.secondary */
+  --md-sys-color-on-secondary-dark: #063350; /* schemes.dark.onSecondary */
+  --md-sys-color-secondary-container-dark: #274c6b; /* schemes.dark.secondaryContainer */
+  --md-sys-color-on-secondary-container-dark: #98bce0; /* schemes.dark.onSecondaryContainer */
+  --md-sys-color-tertiary-dark: #ebbf80; /* schemes.dark.tertiary */
+  --md-sys-color-on-tertiary-dark: #442b00; /* schemes.dark.onTertiary */
+  --md-sys-color-tertiary-container-dark: #b18a50; /* schemes.dark.tertiaryContainer - Mapped from your MTB export logic */
+  --md-sys-color-on-tertiary-container-dark: #3b2500; /* schemes.dark.onTertiaryContainer */
+  --md-sys-color-error-dark: #ffb4ab; /* schemes.dark.error */
+  --md-sys-color-on-error-dark: #690005; /* schemes.dark.onError */
+  --md-sys-color-error-container-dark: #93000a; /* schemes.dark.errorContainer */
+  --md-sys-color-on-error-container-dark: #ffdad6; /* schemes.dark.onErrorContainer */
+  --md-sys-color-outline-dark: #88929d; /* schemes.dark.outline */
+  --md-sys-color-background-dark: #0f1419; /* schemes.dark.background */
+  --md-sys-color-on-background-dark: #dfe3ea; /* schemes.dark.onBackground */
+  --md-sys-color-surface-dark: #0f1419; /* schemes.dark.surface */
+  --md-sys-color-on-surface-dark: #dfe3ea; /* schemes.dark.onSurface */
+  --md-sys-color-surface-variant-dark: #3f4851; /* schemes.dark.surfaceVariant */
+  --md-sys-color-on-surface-variant-dark: #bec7d3; /* schemes.dark.onSurfaceVariant */
+  --md-sys-color-inverse-surface-dark: #dfe3ea; /* schemes.dark.inverseSurface */
+  --md-sys-color-inverse-on-surface-dark: #2c3136; /* schemes.dark.inverseOnSurface */
+  --md-sys-color-inverse-primary-dark: #006399; /* schemes.dark.inversePrimary */
+  --md-sys-color-shadow-dark: #000000; /* schemes.dark.shadow */
+  --md-sys-color-surface-tint-dark: #95ccff; /* schemes.dark.surfaceTint */
+  --md-sys-color-outline-variant-dark: #3f4851; /* schemes.dark.outlineVariant */
+  --md-sys-color-scrim-dark: #000000; /* schemes.dark.scrim */
 
   /* display - large */
   --md-sys-typescale-display-large-font-family-name: Roboto;
