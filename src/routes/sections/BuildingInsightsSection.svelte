@@ -47,7 +47,7 @@
   export let map: google.maps.Map;
 
   const icon = 'home';
-  const title = 'Building Insights endpoint';
+  const title = 'Gebäudeübersicht';
 
   let requestSent = false;
   let requestError: RequestError | undefined;
@@ -131,17 +131,17 @@
 {#if requestError}
   <div class="error-container on-error-container-text">
     <Expandable section={title} icon="error" {title} subtitle={requestError.error.status}>
-      <div class="grid place-items-center py-2 space-y-4">
+      <div class="grid py-2 space-y-4 place-items-center">
         <div class="grid place-items-center">
           <p class="body-medium">
-            Error on <code>buildingInsights</code> request
+            Fehler bei <code>buildingInsights</code> Anfrage
           </p>
           <p class="title-large">ERROR {requestError.error.code}</p>
           <p class="body-medium"><code>{requestError.error.status}</code></p>
           <p class="label-medium">{requestError.error.message}</p>
         </div>
         <md-filled-button role={undefined} on:click={() => showSolarPotential(location)}>
-          Retry
+          Erneut probieren
           <md-icon slot="icon">refresh</md-icon>
         </md-filled-button>
       </div>
@@ -161,9 +161,9 @@
       1000
     ).toFixed(2)} MWh`}
   >
-    <div class="flex flex-col space-y-2 px-2">
+    <div class="flex flex-col px-2 space-y-2">
       <span class="outline-text label-medium">
-        <b>{title}</b> provides data on the location, dimensions & solar potential of a building.
+        <b>{title}</b> liefert Daten über den Standort, die Abmessungen und das Solarpotenzial eines Gebäudes.
       </span>
 
       <InputPanelsCount
@@ -173,14 +173,14 @@
       <NumberInput
         bind:value={panelCapacityWatts}
         icon="bolt"
-        label="Panel capacity"
-        suffix="Watts"
+        label="Panel-Kapazität"
+        suffix="Watt"
       />
-      <InputBool bind:value={showPanels} label="Solar panels" />
+      <InputBool bind:value={showPanels} label="Solarplatten" />
 
       <div class="grid justify-items-end">
         <md-filled-tonal-button role={undefined} on:click={() => apiResponseDialog.show()}>
-          API response
+          API Antwort
         </md-filled-tonal-button>
       </div>
 
@@ -196,7 +196,7 @@
         </div>
         <div slot="actions">
           <md-text-button role={undefined} on:click={() => apiResponseDialog.close()}>
-            Close
+            Schließen
           </md-text-button>
         </div>
       </md-dialog>
@@ -205,43 +205,43 @@
 
   {#if expandedSection == title}
     <div class="absolute top-0 left-0 w-72">
-      <div class="flex flex-col space-y-2 m-2">
+      <div class="flex flex-col m-2 space-y-2">
         <SummaryCard
           {icon}
           {title}
           rows={[
             {
               icon: 'wb_sunny',
-              name: 'Annual sunshine',
+              name: 'Jährlicher Sonnenschein',
               value: showNumber(buildingInsights.solarPotential.maxSunshineHoursPerYear),
-              units: 'hr',
+              units: 'Stunden',
             },
             {
               icon: 'square_foot',
-              name: 'Roof area',
+              name: 'Dachfläche',
               value: showNumber(buildingInsights.solarPotential.wholeRoofStats.areaMeters2),
               units: 'm²',
             },
             {
               icon: 'solar_power',
-              name: 'Max panel count',
+              name: 'Maximale Plattenanzahl',
               value: showNumber(buildingInsights.solarPotential.solarPanels.length),
-              units: 'panels',
+              units: 'Solarplatten',
             },
             {
               icon: 'co2',
-              name: 'CO₂ savings',
+              name: 'CO₂ Einsparungen',
               value: showNumber(buildingInsights.solarPotential.carbonOffsetFactorKgPerMwh),
               units: 'Kg/MWh',
             },
           ]}
         />
 
-        <div class="p-4 w-full surface on-surface-text rounded-lg shadow-md">
+        <div class="w-full p-4 rounded-lg shadow-md surface on-surface-text">
           <div class="flex justify-around">
             <Gauge
               icon="solar_power"
-              title="Panels count"
+              title="Solarplatten Anzahl"
               label={showNumber(panelConfig.panelsCount)}
               labelSuffix={`/ ${showNumber(solarPanels.length)}`}
               max={solarPanels.length}
@@ -250,7 +250,7 @@
 
             <Gauge
               icon="energy_savings_leaf"
-              title="Yearly energy"
+              title="Jährliche Energie"
               label={showNumber((panelConfig?.yearlyEnergyDcKwh ?? 0) * panelCapacityRatio)}
               labelSuffix="KWh"
               max={buildingInsights.solarPotential.solarPanelConfigs.slice(-1)[0]

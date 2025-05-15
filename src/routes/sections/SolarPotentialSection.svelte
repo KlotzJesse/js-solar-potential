@@ -44,7 +44,7 @@
   export let defaultPanelCapacityWatts: number;
 
   const icon = 'payments';
-  const title = 'Solar Potential analysis';
+  const title = 'Solar Potenzialanalyse';
 
   let costChart: HTMLElement;
   let showAdvancedSettings = false;
@@ -178,7 +178,7 @@
       const googleCharts = google.charts as any;
       const chart = new googleCharts.Line(costChart);
       const options = googleCharts.Line.convertOptions({
-        title: `Cost analysis for ${installationLifeSpan} years`,
+        title: `Kostenanalyse für ${installationLifeSpan} Jahre`,
         width: 350,
         height: 200,
       });
@@ -204,32 +204,15 @@
   bind:section={expandedSection}
   {icon}
   {title}
-  subtitle="Values are only placeholders."
-  subtitle2="Update with your own values."
+  subtitle="Die Werte sind Platzhalter."
+  subtitle2="Aktualisieren Sie diese mit eigenen Werten."
   secondary
 >
-  <div class="flex flex-col space-y-4 pt-1">
-    <div class="p-4 mb-4 surface-variant outline-text rounded-lg">
-      <p class="relative inline-flex items-center space-x-2">
-        <md-icon class="md:w-6 w-8">info</md-icon>
-        <span>
-          Projections use a
-          <a
-            class="primary-text"
-            href="https://developers.google.com/maps/documentation/solar/calculate-costs-us"
-            target="_blank"
-          >
-            USA financial model
-            <md-icon class="text-sm">open_in_new</md-icon>
-          </a>
-        </span>
-      </p>
-    </div>
-
+  <div class="flex flex-col pt-1 space-y-4">
     <InputMoney
       bind:value={monthlyAverageEnergyBillInput}
       icon="credit_card"
-      label="Monthly average energy bill"
+      label="Monatlich Durchschnittliche Energiekosten"
       onChange={updateConfig}
     />
 
@@ -245,29 +228,29 @@
     <InputMoney
       bind:value={energyCostPerKwhInput}
       icon="paid"
-      label="Energy cost per kWh"
+      label="Energiekosten pro kWh"
       onChange={updateConfig}
     />
 
     <InputMoney
       bind:value={solarIncentives}
       icon="redeem"
-      label="Solar incentives"
+      label="Solarförderung"
       onChange={updateConfig}
     />
 
     <InputMoney
       bind:value={installationCostPerWatt}
       icon="request_quote"
-      label="Installation cost per Watt"
+      label="Installationskosten pro Watt"
       onChange={updateConfig}
     />
 
     <InputNumber
       bind:value={panelCapacityWattsInput}
       icon="bolt"
-      label="Panel capacity"
-      suffix="Watts"
+      label="Panel Kapazität"
+      suffix="Watt"
       onChange={updateConfig}
     />
 
@@ -277,7 +260,7 @@
         role={undefined}
         on:click={() => (showAdvancedSettings = !showAdvancedSettings)}
       >
-        {showAdvancedSettings ? 'Hide' : 'Show'} advanced settings
+        Erweiterte Einstellungen {showAdvancedSettings ? 'verstecken' : 'anzeigen'}
         <md-icon slot="icon">
           {showAdvancedSettings ? 'expand_less' : 'expand_more'}
         </md-icon>
@@ -289,22 +272,22 @@
         <InputNumber
           bind:value={installationLifeSpan}
           icon="date_range"
-          label="Installation lifespan"
-          suffix="years"
+          label="Lebensdauer der Anlage"
+          suffix="Jahre"
           onChange={updateConfig}
         />
 
         <InputPercent
           bind:value={dcToAcDerateInput}
           icon="dynamic_form"
-          label="DC to AC conversion "
+          label="Gleichstrom-Wechselstrom-Wandlung "
           onChange={updateConfig}
         />
 
         <InputRatio
           bind:value={efficiencyDepreciationFactor}
           icon="trending_down"
-          label="Panel efficiency decline per year"
+          label="Rückgang der Panel-Effizienz pro Jahr"
           decrease
           onChange={updateConfig}
         />
@@ -312,43 +295,31 @@
         <InputRatio
           bind:value={costIncreaseFactor}
           icon="price_change"
-          label="Energy cost increase per year"
+          label="Anstieg der Energiekosten pro Jahr"
           onChange={updateConfig}
         />
 
         <InputRatio
           bind:value={discountRate}
           icon="local_offer"
-          label="Discount rate per year"
+          label="Abzinsungssatz pro Jahr"
           onChange={updateConfig}
         />
       </div>
     {/if}
-
-    <div class="grid justify-items-end">
-      <md-filled-tonal-button
-        trailing-icon
-        role={undefined}
-        href="https://developers.google.com/maps/documentation/solar/calculate-costs-us"
-        target="_blank"
-      >
-        More details
-        <md-icon slot="icon">open_in_new</md-icon>
-      </md-filled-tonal-button>
-    </div>
   </div>
 </Expandable>
 
 <div class="absolute top-0 left-0">
   {#if expandedSection == title}
-    <div class="flex flex-col space-y-2 m-2">
+    <div class="flex flex-col m-2 space-y-2">
       <SummaryCard
         {icon}
         {title}
         rows={[
           {
             icon: 'energy_savings_leaf',
-            name: 'Yearly energy',
+            name: 'Jährlich erzeugte Energie',
             value: showNumber(
               (solarPanelConfigs[configId]?.yearlyEnergyDcKwh ?? 0) * panelCapacityRatio,
             ),
@@ -356,13 +327,13 @@
           },
           {
             icon: 'speed',
-            name: 'Installation size',
+            name: 'Größe der Anlage',
             value: showNumber(installationSizeKw),
             units: 'kW',
           },
           {
             icon: 'request_quote',
-            name: 'Installation cost',
+            name: 'Installationskosten',
             value: showMoney(installationCostTotal),
           },
           {
@@ -375,7 +346,7 @@
               'battery_5_bar',
               'battery_full',
             ][Math.floor(Math.min(Math.round(energyCovered * 100) / 100, 1) * 6)],
-            name: 'Energy covered',
+            name: 'Abgedeckte Energie',
             value: Math.round(energyCovered * 100).toString(),
             units: '%',
           },
@@ -383,24 +354,24 @@
       />
     </div>
 
-    <div class="mx-2 p-4 surface on-surface-text rounded-lg shadow-lg">
+    <div class="p-4 mx-2 rounded-lg shadow-lg surface on-surface-text">
       <div bind:this={costChart} />
       <div class="w-full secondary-text">
         <Table
           rows={[
             {
               icon: 'wallet',
-              name: 'Cost without solar',
+              name: 'Kosten ohne Solar',
               value: showMoney(totalCostWithoutSolar),
             },
             {
               icon: 'wb_sunny',
-              name: 'Cost with solar',
+              name: 'Kosten mit Solar',
               value: showMoney(totalCostWithSolar),
             },
             {
               icon: 'savings',
-              name: 'Savings',
+              name: 'Ersparnis',
               value: showMoney(savings),
             },
             {
@@ -410,7 +381,7 @@
                 breakEvenYear >= 0
                   ? `${breakEvenYear + new Date().getFullYear() + 1} in ${breakEvenYear + 1}`
                   : '--',
-              units: 'years',
+              units: 'Jahre',
             },
           ]}
         />

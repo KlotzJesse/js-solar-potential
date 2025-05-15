@@ -73,7 +73,7 @@
   {/if}
 
   {#if buildingInsights && configId !== undefined}
-    <md-divider inset />
+    <!--<md-divider inset />
     <DataLayersSection
       bind:expandedSection
       bind:showPanels
@@ -81,7 +81,7 @@
       {buildingInsights}
       {geometryLibrary}
       {map}
-    />
+    />-->
 
     <md-divider inset />
     <SolarPotentialSection

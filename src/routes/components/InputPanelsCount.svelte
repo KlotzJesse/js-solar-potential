@@ -28,10 +28,10 @@
 </script>
 
 <div>
-  <table class="table-auto w-full body-medium secondary-text">
+  <table class="w-full table-auto body-medium secondary-text">
     <tr>
       <td class="primary-text"><md-icon>solar_power</md-icon> </td>
-      <th class="pl-2 text-left">Panels count</th>
+      <th class="pl-2 text-left">Anzahl Panäle</th>
       <td class="pl-2 text-right">
         <span>{solarPanelConfigs[configId].panelsCount} panels</span>
       </td>
