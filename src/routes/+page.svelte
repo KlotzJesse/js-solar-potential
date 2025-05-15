@@ -21,15 +21,32 @@
   const { Loader } = GMAPILoader;
 
   import { onMount } from 'svelte';
+  import { page } from '$app/stores';
 
   import SearchBar from './components/SearchBar.svelte';
   import Sections from './sections/Sections.svelte';
 
   const googleMapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
-  const defaultPlace = {
+
+  // Default values
+  const fallbackPlace = {
     name: 'Rinconada Library',
     address: '1213 Newell Rd, Palo Alto, CA 94303',
   };
+
+  // Reactive variables for URL params
+  let defaultPlace = fallbackPlace;
+
+  $: {
+    const urlParams = $page.url.searchParams;
+    const name = urlParams.get('name');
+    const address = urlParams.get('address');
+    defaultPlace = {
+      name: name || fallbackPlace.name,
+      address: address || fallbackPlace.address,
+    };
+  }
+
   let location: google.maps.LatLng | undefined;
   const zoom = 19;
 
@@ -39,6 +56,7 @@
   let geometryLibrary: google.maps.GeometryLibrary;
   let mapsLibrary: google.maps.MapsLibrary;
   let placesLibrary: google.maps.PlacesLibrary;
+
   onMount(async () => {
     // Load the Google Maps libraries.
     const loader = new Loader({ apiKey: googleMapsApiKey });
@@ -80,13 +98,13 @@
   <div bind:this={mapElement} class="w-full" />
 
   <!-- Side bar -->
-  <aside class="flex-none md:w-96 w-80 p-2 pt-3 overflow-auto">
-    <div class="flex flex-col space-y-2 h-full">
+  <aside class="flex-none p-2 pt-3 overflow-auto md:w-96 w-80">
+    <div class="flex flex-col h-full space-y-2">
       {#if placesLibrary && map}
         <SearchBar bind:location {placesLibrary} {map} initialValue={defaultPlace.name} />
       {/if}
 
-      <div class="p-4 surface-variant outline-text rounded-lg space-y-3">
+      <div class="p-4 space-y-3 rounded-lg surface-variant outline-text">
         <p>
           <a
             class="primary-text"
