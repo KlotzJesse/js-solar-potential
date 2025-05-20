@@ -28,7 +28,7 @@
   }
 </script>
 
-<label for={label} class="p-2 relative inline-flex items-center cursor-pointer">
+<label for={label} class="relative inline-flex items-center p-2 cursor-pointer">
   <md-switch id={label} role={undefined} selected={value} on:click={onClick} />
-  <span class="ml-3 body-large">{label}</span>
+  <span class="ml-3 body-small">{label}</span>
 </label>

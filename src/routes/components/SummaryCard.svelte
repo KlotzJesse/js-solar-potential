@@ -27,12 +27,12 @@
   }[] = [];
 </script>
 
-<div class="grid justify-items-start surface on-surface-text p-4 rounded-lg shadow-lg">
+<div class="grid p-4 rounded-lg shadow-lg justify-items-start surface on-surface-text">
   <div class="flex items-center primary-text">
     <md-icon class="w-8">{icon}</md-icon>
-    <p class="body-large"><b>{title}</b></p>
+    <p class="body-small"><b>{title}</b></p>
   </div>
-  <div class="py-3 w-full">
+  <div class="w-full py-3">
     <md-divider />
   </div>
   <div class="w-full secondary-text">

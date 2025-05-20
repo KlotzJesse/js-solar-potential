@@ -25,7 +25,7 @@
 </script>
 
 <div class="grid place-items-center">
-  <p class="p-2 body-large">{title}</p>
+  <p class="p-2 body-small">{title}</p>
   <div class="relative" style="width: 72px; height: 72px">
     <md-circular-progress {value} {min} {max} style="--md-circular-progress-size: 72px;" />
     <md-icon-button class="absolute inset-0 m-auto">

@@ -34,7 +34,7 @@
 <button class="flex flex-row w-full p-4" on:click={toggle}>
   <md-icon class={`${titleText} w-12`}>{icon}</md-icon>
   <div class="w-full grid justify-items-start text-left">
-    <p class={`${titleText} body-large`}><b>{title}</b></p>
+    <p class={`${titleText} body-small`}><b>{title}</b></p>
     <p class="label-medium outline-text">{subtitle}</p>
     <p class="label-medium outline-text">{subtitle2}</p>
   </div>
