@@ -32,7 +32,7 @@
       <md-icon class="primary-text">{icon}</md-icon>
     </md-icon-button>
   </div>
-  <p class="p-2 body-medium">
+  <p class="p-2 body-small">
     <span class="primary-text">
       <b>{label}</b>
     </span>

@@ -202,12 +202,12 @@
     <Expandable section={title} icon="error" {title} subtitle={requestError.error.status}>
       <div class="grid place-items-center py-2 space-y-4">
         <div class="grid place-items-center">
-          <p class="body-medium">
+          <p class="body-small">
             Error on <code>dataLayers</code>
             {layerId} request
           </p>
           <p class="title-large">ERROR {requestError.error.code}</p>
-          <p class="body-medium"><code>{requestError.error.status}</code></p>
+          <p class="body-small"><code>{requestError.error.status}</code></p>
           <p class="label-medium">{requestError.error.message}</p>
         </div>
         <md-filled-button role={undefined} on:click={() => showDataLayer(true)}>

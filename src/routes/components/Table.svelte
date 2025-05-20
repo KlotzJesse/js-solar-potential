@@ -23,7 +23,7 @@
   }[] = [];
 </script>
 
-<table class="table-auto w-full body-medium">
+<table class="table-auto w-full body-small">
   {#each rows as row}
     <tr>
       <td class="primary-text py-2">

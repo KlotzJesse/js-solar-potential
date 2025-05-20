@@ -28,7 +28,7 @@
 </script>
 
 <div>
-  <table class="w-full table-auto body-medium secondary-text">
+  <table class="w-full table-auto body-small secondary-text">
     <tr>
       <td class="primary-text"><md-icon>solar_power</md-icon> </td>
       <th class="pl-2 text-left">Anzahl Solarpanäle</th>

@@ -133,11 +133,11 @@
     <Expandable section={title} icon="error" {title} subtitle={requestError.error.status}>
       <div class="grid py-2 space-y-4 place-items-center">
         <div class="grid place-items-center">
-          <p class="body-medium">
+          <p class="body-small">
             Fehler bei <code>buildingInsights</code> Anfrage
           </p>
           <p class="title-large">ERROR {requestError.error.code}</p>
-          <p class="body-medium"><code>{requestError.error.status}</code></p>
+          <p class="body-small"><code>{requestError.error.status}</code></p>
           <p class="label-medium">{requestError.error.message}</p>
         </div>
         <md-filled-button role={undefined} on:click={() => showSolarPotential(location)}>
