@@ -25,7 +25,7 @@
   export let placesLibrary: google.maps.PlacesLibrary;
   export let map: google.maps.Map;
   export let initialValue = '';
-  export let zoom = 15;
+  export let zoom = 18;
 
   let textFieldElement: MdFilledTextField;
 
