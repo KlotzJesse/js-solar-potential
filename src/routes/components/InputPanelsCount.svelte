@@ -21,6 +21,8 @@
   export let configId: number;
   export let solarPanelConfigs: SolarPanelConfig[];
 
+  configId = 0;
+
   function onChange(event: Event) {
     const target = event.target as MdSlider;
     configId = target.value ?? 0;
