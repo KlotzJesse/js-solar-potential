@@ -200,7 +200,7 @@
 {#if requestError}
   <div class="error-container on-error-container-text">
     <Expandable section={title} icon="error" {title} subtitle={requestError.error.status}>
-      <div class="grid place-items-center py-2 space-y-4">
+      <div class="grid py-2 space-y-4 place-items-center">
         <div class="grid place-items-center">
           <p class="body-small">
             Error on <code>dataLayers</code>
@@ -219,7 +219,7 @@
   </div>
 {:else}
   <Expandable bind:section={expandedSection} {icon} {title} subtitle={dataLayerOptions[layerId]}>
-    <div class="flex flex-col space-y-2 px-2">
+    <div class="flex flex-col px-2 space-y-2">
       <span class="outline-text label-medium">
         <b>{title}</b> provides raw and processed imagery and granular details on an area surrounding
         a location.
@@ -329,7 +329,7 @@
           {#if layer.palette}
             <div>
               <div
-                class="h-2 outline rounded-sm"
+                class="h-2 rounded-sm outline"
                 style={`background: linear-gradient(to right, ${layer.palette.colors.map(
                   (hex) => '#' + hex,
                 )})`}
@@ -346,11 +346,11 @@
   {/if}
 </div>
 
-<div class="absolute bottom-6 left-0 w-full">
-  <div class="md:mr-96 mr-80 grid place-items-center">
+<div class="absolute left-0 w-full bottom-6">
+  <div class="grid md:mr-96 mr-80 place-items-center">
     {#if layer}
       <div
-        class="flex items-center surface on-surface-text pr-4 text-center label-large rounded-full shadow-md"
+        class="flex items-center pr-4 text-center rounded-full shadow-md surface on-surface-text label-large"
       >
         {#if layer.id == 'monthlyFlux'}
           <md-slider

@@ -99,7 +99,7 @@
   <div bind:this={mapElement} class="w-full" />
 
   <!-- Side bar -->
-  <aside class="flex-none p-2 pt-3 overflow-auto md:w-96 w-80">
+  <aside class="flex-none p-2 pt-3 overflow-auto w-60">
     <div class="flex flex-col h-full space-y-2">
       {#if placesLibrary && map}
         <SearchBar bind:location {placesLibrary} {map} initialValue={defaultPlace.name} />
