@@ -236,7 +236,7 @@
               units: 'Kg/MWh',
             },
             {
-              icon: 'co2',
+              icon: 'history',
               name: 'Bearbeitet am',
               value: formatNativeDate(
                 convertYourDateToNativeJSDate(buildingInsights.imageryProcessedDate),
@@ -246,7 +246,7 @@
               units: '',
             },
             {
-              icon: 'co2',
+              icon: 'camera',
               name: 'Bild vom',
               value: formatNativeDate(
                 convertYourDateToNativeJSDate(buildingInsights.imageryDate),
