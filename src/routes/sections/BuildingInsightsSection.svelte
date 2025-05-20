@@ -31,7 +31,7 @@
   import { panelsPalette } from '../colors';
   import InputBool from '../components/InputBool.svelte';
   import InputPanelsCount from '../components/InputPanelsCount.svelte';
-  import { showNumber } from '../utils';
+  import { convertYourDateToNativeJSDate, formatNativeDate, showNumber } from '../utils';
   import NumberInput from '../components/InputNumber.svelte';
   import Gauge from '../components/Gauge.svelte';
 
@@ -163,7 +163,8 @@
   >
     <div class="flex flex-col px-2 space-y-2">
       <span class="outline-text label-medium">
-        <b>{title}</b> liefert Daten über den Standort, die Abmessungen und das Solarpotenzial eines Gebäudes.
+        <b>{title}</b> liefert Daten über den Standort, die Abmessungen und das Solarpotenzial eines
+        Gebäudes.
       </span>
 
       <InputPanelsCount
@@ -233,6 +234,26 @@
               name: 'CO₂ Einsparungen',
               value: showNumber(buildingInsights.solarPotential.carbonOffsetFactorKgPerMwh),
               units: 'Kg/MWh',
+            },
+            {
+              icon: 'co2',
+              name: 'Bearbeitet am',
+              value: formatNativeDate(
+                convertYourDateToNativeJSDate(buildingInsights.imageryProcessedDate),
+                'de-DE',
+                { year: 'numeric', month: '2-digit', day: '2-digit' },
+              ),
+              units: '',
+            },
+            {
+              icon: 'co2',
+              name: 'Bild vom',
+              value: formatNativeDate(
+                convertYourDateToNativeJSDate(buildingInsights.imageryDate),
+                'de-DE',
+                { year: 'numeric', month: '2-digit', day: '2-digit' },
+              ),
+              units: '',
             },
           ]}
         />

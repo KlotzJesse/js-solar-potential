@@ -20,6 +20,30 @@ export function showNumber(x: number) {
   return x.toLocaleString(undefined, { maximumFractionDigits: 1 });
 }
 
+export function convertYourDateToNativeJSDate(
+  yourDate: { year: number; month: number; day: number } | null | undefined,
+): globalThis.Date | null {
+  if (!yourDate) {
+    return null;
+  }
+  return new globalThis.Date(yourDate.year, yourDate.month - 1, yourDate.day);
+}
+
+// Helper function to safely format a native JS Date
+export function formatNativeDate(
+  nativeDate: globalThis.Date | null,
+  locale: string,
+  options: Intl.DateTimeFormatOptions,
+): string {
+  if (!nativeDate) {
+    return 'N/A'; // Or some other placeholder
+  }
+  if (isNaN(nativeDate.getTime())) {
+    return 'Invalid Date';
+  }
+  return nativeDate.toLocaleDateString(locale, options);
+}
+
 export function showMoney(amount: number) {
   return `$${amount.toLocaleString(undefined, {
     minimumFractionDigits: 2,
