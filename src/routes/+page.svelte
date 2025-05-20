@@ -49,7 +49,7 @@
   });
 
   let location: google.maps.LatLng | undefined;
-  const zoom = 19;
+  const zoom = 15;
 
   // Initialize app.
   let mapElement: HTMLElement;
