@@ -101,13 +101,13 @@
   --md-ref-palette-neutral-variant99: #fffbfe;
   --md-ref-palette-neutral-variant100: #ffffff;
   /* light */
-  --md-sys-color-primary-light: #6750a4;
+  --md-sys-color-primary-light: #009def;
   --md-sys-color-on-primary-light: #ffffff;
-  --md-sys-color-primary-container-light: #eaddff;
+  --md-sys-color-primary-container-light: #009def;
   --md-sys-color-on-primary-container-light: #21005d;
   --md-sys-color-secondary-light: #625b71;
   --md-sys-color-on-secondary-light: #ffffff;
-  --md-sys-color-secondary-container-light: #e8def8;
+  --md-sys-color-secondary-container-light: #009def;
   --md-sys-color-on-secondary-container-light: #1d192b;
   --md-sys-color-tertiary-light: #7d5260;
   --md-sys-color-on-tertiary-light: #ffffff;

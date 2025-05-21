@@ -37,7 +37,6 @@
   // Reactive variables for URL params
   let defaultPlace = fallbackPlace;
 
-
   onMount(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const name = urlParams.get('name');
@@ -89,6 +88,26 @@
       rotateControl: false,
       streetViewControl: false,
       zoomControl: false,
+    });
+
+    // Add a click listener to the map
+    map.addListener('click', async (event: google.maps.MapMouseEvent) => {
+      if (event.latLng) {
+        location = event.latLng; // Update the location
+        map.setCenter(location); // Optionally re-center the map
+
+        // Reverse geocode the clicked location
+        const geocoderResponse = await geocoder.geocode({
+          location: location,
+        });
+        if (geocoderResponse.results.length > 0) {
+          const clickedAddress = geocoderResponse.results[0].formatted_address;
+          defaultPlace = {
+            name: clickedAddress,
+            address: clickedAddress,
+          };
+        }
+      }
     });
   });
 </script>

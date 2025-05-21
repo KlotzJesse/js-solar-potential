@@ -39,7 +39,7 @@
   export let buildingInsights: BuildingInsightsResponse | undefined;
   export let configId: number | undefined;
   export let panelCapacityWatts: number;
-  export let showPanels: boolean;
+  export let showPanels: boolean = true;
 
   export let googleMapsApiKey: string;
   export let geometryLibrary: google.maps.GeometryLibrary;
@@ -156,17 +156,12 @@
     bind:section={expandedSection}
     {icon}
     {title}
-    subtitle={`Yearly energy: ${(
+    subtitle={`Jährlicher Energieverbrauch: ${(
       (panelConfig.yearlyEnergyDcKwh * panelCapacityRatio) /
       1000
     ).toFixed(2)} MWh`}
   >
     <div class="flex flex-col px-2 space-y-2">
-      <span class="outline-text label-medium">
-        <b>{title}</b> liefert Daten über den Standort, die Abmessungen und das Solarpotenzial eines
-        Gebäudes.
-      </span>
-
       <InputPanelsCount
         bind:configId
         solarPanelConfigs={buildingInsights.solarPotential.solarPanelConfigs}

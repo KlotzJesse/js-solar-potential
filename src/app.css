@@ -14,9 +14,7 @@
  limitations under the License.
  */
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
 :root {
   --md-sys-color-primary: var(--md-sys-color-primary-light);

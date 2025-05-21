@@ -23,7 +23,7 @@
 
   function onClick(event: Event) {
     const target = event.target as MdSwitch;
-    value = target.selected;
+    value = !target.selected;
     onChange(value);
   }
 </script>
