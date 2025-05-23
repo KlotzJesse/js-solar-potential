@@ -82,12 +82,12 @@
       center: location,
       zoom: zoom,
       tilt: 0,
-      mapTypeId: 'satellite',
+      mapTypeId: 'hybrid',
       mapTypeControl: false,
-      fullscreenControl: false,
+      fullscreenControl: true,
       rotateControl: false,
       streetViewControl: false,
-      zoomControl: false,
+      zoomControl: true,
     });
 
     // Add a click listener to the map
