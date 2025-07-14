@@ -125,3 +125,5 @@ bun run test         # Run all tests (unit + integration)
 - **TypeScript Errors**: Use `/* global google */` comment for Google Maps types
 - **Build Failures**: Check `adapter-vercel` configuration in `svelte.config.js`
 - **Component Imports**: Material Web components require specific import syntax
+
+ALWAYS use bun as a package manager!
