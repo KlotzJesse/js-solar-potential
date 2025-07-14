@@ -21,9 +21,10 @@
   const { Loader } = GMAPILoader;
 
   import { onMount } from 'svelte';
-  import { page } from '$app/stores';
 
   import SearchBar from './components/SearchBar.svelte';
+  import type { SelectedBuilding } from './multi-building';
+  import { MultiBuildingManager } from './multi-building';
   import Sections from './sections/Sections.svelte';
 
   const googleMapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
@@ -49,6 +50,18 @@
 
   let location: google.maps.LatLng | undefined;
   const zoom = 18;
+
+  // Multi-building management
+  let buildingManager: MultiBuildingManager;
+  let selectedBuildings: SelectedBuilding[] = [];
+  let selectedBuildingId: string | null = null;
+
+  // Initialize building manager
+  onMount(() => {
+    buildingManager = new MultiBuildingManager((buildings) => {
+      selectedBuildings = buildings;
+    });
+  });
 
   // Initialize app.
   let mapElement: HTMLElement;
@@ -90,22 +103,132 @@
       zoomControl: true,
     });
 
-    // Add a click listener to the map
+    // Add a click listener to the map - automatically add buildings to multi-selection
     map.addListener('click', async (event: google.maps.MapMouseEvent) => {
-      if (event.latLng) {
-        location = event.latLng; // Update the location
-        map.setCenter(location); // Optionally re-center the map
+      if (event.latLng && buildingManager) {
+        const clickedLocation = event.latLng;
 
-        // Reverse geocode the clicked location
-        const geocoderResponse = await geocoder.geocode({
-          location: location,
-        });
-        if (geocoderResponse.results.length > 0) {
-          const clickedAddress = geocoderResponse.results[0].formatted_address;
-          defaultPlace = {
-            name: clickedAddress,
-            address: clickedAddress,
-          };
+        // Check if there's already a building at this location
+        const existingBuildingId = buildingManager.hasBuilding(clickedLocation, 0.0001);
+
+        if (existingBuildingId) {
+          // Select the existing building
+          selectedBuildingId = existingBuildingId;
+          map.setCenter(clickedLocation);
+        } else {
+          // Add new building automatically
+          try {
+            // Reverse geocode the clicked location
+            const geocoderResponse = await geocoder.geocode({
+              location: clickedLocation,
+            });
+
+            if (geocoderResponse.results.length > 0) {
+              const address = geocoderResponse.results[0].formatted_address;
+
+              // Try to get building insights and add to manager
+              try {
+                const { findClosestBuilding } = await import('./solar');
+                const buildingInsights = await findClosestBuilding(
+                  clickedLocation,
+                  googleMapsApiKey,
+                );
+
+                const buildingId = buildingManager.addBuilding(
+                  buildingInsights,
+                  clickedLocation,
+                  address,
+                  0, // Default config
+                );
+
+                selectedBuildingId = buildingId;
+
+                // Create and store panels for this building
+                const { createPalette, normalize, rgbToColor } = await import('./visualize');
+                const { panelsPalette } = await import('./colors');
+
+                const solarPotential = buildingInsights.solarPotential;
+                const palette = createPalette(panelsPalette).map(rgbToColor);
+                const minEnergy = solarPotential.solarPanels.slice(-1)[0]?.yearlyEnergyDcKwh || 0;
+                const maxEnergy = solarPotential.solarPanels[0]?.yearlyEnergyDcKwh || 0;
+
+                const panels = solarPotential.solarPanels.map((panel) => {
+                  const [w, h] = [
+                    solarPotential.panelWidthMeters / 2,
+                    solarPotential.panelHeightMeters / 2,
+                  ];
+                  const points = [
+                    { x: +w, y: +h }, // top right
+                    { x: +w, y: -h }, // bottom right
+                    { x: -w, y: -h }, // bottom left
+                    { x: -w, y: +h }, // top left
+                    { x: +w, y: +h }, //  top right
+                  ];
+                  const orientation = panel.orientation == 'PORTRAIT' ? 90 : 0;
+                  const azimuth =
+                    solarPotential.roofSegmentStats[panel.segmentIndex]?.azimuthDegrees || 0;
+                  const colorIndex = Math.round(
+                    normalize(panel.yearlyEnergyDcKwh, maxEnergy, minEnergy) * 255,
+                  );
+                  return new google.maps.Polygon({
+                    paths: points.map(({ x, y }) =>
+                      geometryLibrary.spherical.computeOffset(
+                        { lat: panel.center.latitude, lng: panel.center.longitude },
+                        Math.sqrt(x * x + y * y),
+                        Math.atan2(y, x) * (180 / Math.PI) + orientation + azimuth,
+                      ),
+                    ),
+                    strokeColor: '#B0BEC5',
+                    strokeOpacity: 0.9,
+                    strokeWeight: 1,
+                    fillColor: palette[colorIndex],
+                    fillOpacity: 0.9,
+                    map: showPanels ? map : null,
+                  });
+                });
+
+                buildingManager.setBuildingPanels(buildingId, panels);
+
+                // Create boundary polygon for the building
+                if (buildingInsights.boundingBox) {
+                  const bbox = buildingInsights.boundingBox;
+                  const boundary = new google.maps.Polygon({
+                    paths: [
+                      { lat: bbox.sw.latitude, lng: bbox.sw.longitude },
+                      { lat: bbox.ne.latitude, lng: bbox.sw.longitude },
+                      { lat: bbox.ne.latitude, lng: bbox.ne.longitude },
+                      { lat: bbox.sw.latitude, lng: bbox.ne.longitude },
+                    ],
+                    strokeColor: '#2196F3',
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: '#2196F3',
+                    fillOpacity: 0.1,
+                    map: map,
+                  });
+                  buildingManager.setBuildingBoundary(buildingId, boundary);
+                }
+
+                console.log('Added building:', address);
+              } catch (error) {
+                console.warn('Could not get building insights for this location:', error);
+                // Still update location for manual inspection in building insights section
+              }
+
+              // Update current location for the BuildingInsights section
+              location = clickedLocation;
+              map.setCenter(clickedLocation);
+              defaultPlace = {
+                name: address,
+                address: address,
+              };
+            }
+          } catch (error) {
+            console.warn('Could not add building at this location:', error);
+            // Still update location for manual inspection
+            location = clickedLocation;
+            map.setCenter(clickedLocation);
+          }
         }
       }
     });
@@ -115,7 +238,7 @@
 <!-- Top bar -->
 <div class="flex flex-row h-full">
   <!-- Main map -->
-  <div bind:this={mapElement} class="w-full" />
+  <div bind:this={mapElement} class="w-full"></div>
 
   <!-- Side bar -->
   <aside class="flex-none p-2 pt-3 overflow-auto w-60">
@@ -125,10 +248,18 @@
       {/if}
 
       {#if location}
-        <Sections {location} {map} {geometryLibrary} {googleMapsApiKey} />
+        <Sections
+          {location}
+          {map}
+          {geometryLibrary}
+          {googleMapsApiKey}
+          {buildingManager}
+          {selectedBuildings}
+          {selectedBuildingId}
+        />
       {/if}
 
-      <div class="grow" />
+      <div class="grow"></div>
     </div>
   </aside>
 </div>

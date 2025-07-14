@@ -20,6 +20,10 @@ export function showNumber(x: number) {
   return x.toLocaleString(undefined, { maximumFractionDigits: 1 });
 }
 
+export function formatNumber(x: number) {
+  return showNumber(x);
+}
+
 export function convertYourDateToNativeJSDate(
   yourDate: { year: number; month: number; day: number } | null | undefined,
 ): globalThis.Date | null {

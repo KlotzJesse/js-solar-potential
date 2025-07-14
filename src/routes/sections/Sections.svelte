@@ -17,21 +17,26 @@
 <script lang="ts">
   /* global google */
 
+  import type { MultiBuildingManager, SelectedBuilding } from '../multi-building';
   import type { BuildingInsightsResponse } from '../solar';
   import { findSolarConfig } from '../utils';
   import BuildingInsightsSection from './BuildingInsightsSection.svelte';
-  import DataLayersSection from './DataLayersSection.svelte';
+  import MultiBuildingSection from './MultiBuildingSection.svelte';
   import SolarPotentialSection from './SolarPotentialSection.svelte';
 
   export let location: google.maps.LatLng;
   export let map: google.maps.Map;
   export let geometryLibrary: google.maps.GeometryLibrary;
   export let googleMapsApiKey: string;
+  export let buildingManager: MultiBuildingManager;
+  export let selectedBuildings: SelectedBuilding[];
+  export let selectedBuildingId: string | null;
 
   let buildingInsights: BuildingInsightsResponse | undefined;
+  let defaultPlace: { name: string; address: string } | undefined;
 
-  // State
-  let expandedSection: string = 'Gebäudeübersicht';
+  // State - Always start with Multi-Building section expanded
+  let expandedSection: string = 'Multi-Gebäude';
   let showPanels = true;
 
   // User settings
@@ -58,7 +63,23 @@
 </script>
 
 <div class="flex flex-col rounded-md shadow-md">
-  {#if geometryLibrary && map}
+  <!-- Always show Multi-Building section first -->
+  <MultiBuildingSection
+    bind:expandedSection
+    bind:showPanels
+    bind:monthlyAverageEnergyBillInput
+    bind:energyCostPerKwhInput
+    bind:panelCapacityWattsInput
+    bind:dcToAcDerateInput
+    {buildingManager}
+    {selectedBuildings}
+    {selectedBuildingId}
+    {map}
+  />
+
+  <!-- Building Insights section for detailed view when a building is selected -->
+  {#if geometryLibrary && map && location}
+    <md-divider inset />
     <BuildingInsightsSection
       bind:expandedSection
       bind:buildingInsights
@@ -69,6 +90,8 @@
       {geometryLibrary}
       {location}
       {map}
+      {buildingManager}
+      currentAddress={defaultPlace?.address || ''}
     />
   {/if}
 

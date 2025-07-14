@@ -18,22 +18,23 @@
   /* global google */
 
   import type { MdDialog } from '@material/web/dialog/dialog';
+  import { panelsPalette } from '../colors';
   import Expandable from '../components/Expandable.svelte';
-  import {
-    type BuildingInsightsResponse,
-    type RequestError,
-    findClosestBuilding,
-    type SolarPanelConfig,
-  } from '../solar';
+  import Gauge from '../components/Gauge.svelte';
+  import InputBool from '../components/InputBool.svelte';
+  import NumberInput from '../components/InputNumber.svelte';
+  import InputPanelsCount from '../components/InputPanelsCount.svelte';
   import Show from '../components/Show.svelte';
   import SummaryCard from '../components/SummaryCard.svelte';
-  import { createPalette, normalize, rgbToColor } from '../visualize';
-  import { panelsPalette } from '../colors';
-  import InputBool from '../components/InputBool.svelte';
-  import InputPanelsCount from '../components/InputPanelsCount.svelte';
+  import type { MultiBuildingManager } from '../multi-building';
+  import {
+    findClosestBuilding,
+    type BuildingInsightsResponse,
+    type RequestError,
+    type SolarPanelConfig,
+  } from '../solar';
   import { convertYourDateToNativeJSDate, formatNativeDate, showNumber } from '../utils';
-  import NumberInput from '../components/InputNumber.svelte';
-  import Gauge from '../components/Gauge.svelte';
+  import { createPalette, normalize, rgbToColor } from '../visualize';
 
   export let expandedSection: string;
   export let buildingInsights: BuildingInsightsResponse | undefined;
@@ -45,6 +46,8 @@
   export let geometryLibrary: google.maps.GeometryLibrary;
   export let location: google.maps.LatLng;
   export let map: google.maps.Map;
+  export let buildingManager: MultiBuildingManager;
+  export let currentAddress: string;
 
   const icon = 'home';
   const title = 'Gebäudeübersicht';
