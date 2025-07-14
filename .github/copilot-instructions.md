@@ -45,12 +45,12 @@ const libraries = {
 ### Essential Commands
 
 ```bash
-npm run dev          # Development with hot reload
-npm run build        # Production build
-npm run check        # TypeScript + Svelte validation
-npm run lint         # ESLint + Prettier checking
-npm run format       # Auto-format code
-npm run test         # Run all tests (unit + integration)
+bun run dev          # Development with hot reload
+bun run build        # Production build
+bun run check        # TypeScript + Svelte validation
+bun run lint         # ESLint + Prettier checking
+bun run format       # Auto-format code
+bun run test         # Run all tests (unit + integration)
 ```
 
 ### Environment Setup
@@ -64,7 +64,7 @@ npm run test         # Run all tests (unit + integration)
 - **Unit tests**: Vitest (`*.test.ts` files in `src/`)
 - **Integration tests**: Playwright (in `tests/` directory)
 - **Coverage**: Vitest with v8 provider
-- Run `npm test` for full test suite
+- Run `bun test` for full test suite
 
 ## Project-Specific Conventions
 

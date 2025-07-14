@@ -217,7 +217,7 @@ export interface GeoTiff {
 // [END solar_api_data_layer_custom_type]
 
 // [START solar_api_download_geotiff]
-// npm install geotiff geotiff-geokeys-to-proj4 proj4
+// bun install geotiff geotiff-geokeys-to-proj4 proj4
 
 import * as geotiff from 'geotiff';
 import * as geokeysToProj4 from 'geotiff-geokeys-to-proj4';

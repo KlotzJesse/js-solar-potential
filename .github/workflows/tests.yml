@@ -31,7 +31,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 20
-      - run: npm ci
+      - run: bun ci
       - run: npx playwright install chromium
-      - run: npm run test:unit
-      - run: npm run test:integration
+      - run: bun run test:unit
+      - run: bun run test:integration

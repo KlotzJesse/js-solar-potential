@@ -21,7 +21,7 @@ To run the samples, you will need:
 - To [sign up with Google Maps Platform]
 - A Google Maps Platform [project] with the **Maps JavaScript and Solar APIs** enabled
 - An [API key] associated with the project above
-- Current version of Node.js and NPM
+- Current version of Node.js and bun
 
 ## Google Maps API key
 
@@ -33,7 +33,7 @@ VITE_GOOGLE_MAPS_API_KEY="YOUR_API_KEY"
 
 ## Running the app
 
-First, run `npm install` to install the required dependencies.
+First, run `bun install` to install the required dependencies.
 
 ### Developer mode
 
@@ -42,7 +42,7 @@ This means that every time you change a file, the app reloads itself automatical
 
 ```sh
 # Run in developer mode.
-npm run dev
+bun run dev
 ```
 
 ### Production mode
@@ -51,10 +51,10 @@ Starting in developer mode enables a lot of useful tools while developing, but f
 
 ```sh
 # Build the app.
-npm run build
+bun run build
 
 # Start the app.
-npm run start
+bun run start
 ```
 
 ## Deploying to Cloud Run
@@ -63,7 +63,7 @@ One option to deploy your app is with [Cloud Run](https://cloud.google.com/run).
 It's easy to use and allows us to build and deploy scalable containerized apps written in any language on a fully managed platform.
 
 For some languages like Node.js, it infers the configuration and can [deploy from source directly](https://cloud.google.com/run/docs/deploying-source-code), without any additional configurations!
-This uploads your source, builds it with [Cloud Build](https://cloud.google.com/build), deploys it to Cloud Run, and starts the service with `npm run start`.
+This uploads your source, builds it with [Cloud Build](https://cloud.google.com/build), deploys it to Cloud Run, and starts the service with `bun run start`.
 All with a single command.
 
 ```sh
@@ -79,11 +79,11 @@ gcloud run deploy "solar-potential" \
 
 ## Checking your code
 
-You can use `npm run check` to do type checking and check for other common issues.
-You can also use `npm run check:watch` to continuously check your code when you save your changes.
+You can use `bun run check` to do type checking and check for other common issues.
+You can also use `bun run check:watch` to continuously check your code when you save your changes.
 
-To check for styling and formatting issues, you can use `npm run lint`.
-To fix any lint issues, use `npm run format` to automatically format all the code base.
+To check for styling and formatting issues, you can use `bun run lint`.
+To fix any lint issues, use `bun run format` to automatically format all the code base.
 
 ## Tech stack
 
@@ -116,7 +116,6 @@ You can also discuss this sample on our [Discord server].
 
 [Solar API]: https://developers.google.com/maps/documentation/solar
 [API key]: https://developers.google.com/maps/documentation/solar/get-api-key
-
 [code of conduct]: ?tab=coc-ov-file#readme
 [contributing guide]: CONTRIBUTING
 [Deprecation Policy]: https://cloud.google.com/maps-platform/terms
